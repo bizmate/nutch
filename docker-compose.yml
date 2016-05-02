@@ -1,0 +1,57 @@
+version: '2'
+
+services:
+  nutch:
+    container_name: nutch
+    image: meabed/nutch
+    ports:
+          - 8899:8899
+    links:
+      - "hbase"
+    volumes:
+        - ./urls:/opt/nutch/urls
+#        - ./docker/nutch/gora.properties:/opt/nutch/conf/gora.properties
+#        - ./docker/nutch/ivy.xml:/opt/apache-nutch-2.2.1/ivy/ivy.xml
+#        - ./docker/nutch/nutch-site.xml:/opt/apache-nutch-2.2.1/runtime/local/conf/nutch-site.xml
+#        - ./docker/hbase/data:/data
+#        - ./docker/hbase/hbase-site.xml:/opt/apache-nutch-2.2.1/runtime/local/conf/hbase-site.xml
+    volumes_from:
+      - data
+#    volumes:
+#      - ./:/project
+#      - ./logs:/logs
+#      - ./docker:/docker
+#      - ./v3:/v3
+#      - ./v2:/v2
+#  cassandra:
+#    container_name: cassandra
+#    image: cassandra
+#    ports:
+#      - 9160:9160
+#    volumes:
+#      #- ./docker/cassandra/cassandra.yaml:/etc/cassandra/cassandra.yaml
+#      - ./docker/cassandra/data:/var/lib/cassandra/
+
+  hbase:
+    image: banno/hbase-standalone
+#    environment:
+#      - REDIS_HOST=appcache
+#      - REDIS_PORT=6379
+#      - CACHE_DRIVER=redis
+#      - SESSION_DRIVER=redis
+#      - OKTA_API_KEY=001ZYzCLHpU-ozUDDHITYJKNyQL8aHEoc1lvxsK7ke
+#      - OKTA_BASE_URI=https://kobaltmusic.okta-emea.com
+#      - APP_ENV=local # to be changed with env variable soon
+#      - APP_DEBUG=true
+#      - APP_KEY=y3sHANM1WWa8DsVLKYqYdLzLRd1sYm2Z
+    volumes_from:
+      - data
+#    volumes:
+#      - ./docker/hbase/hbase-site.xml:/opt/hbase/hbase-0.94.15-cdh4.7.0/conf/hbase-site.xml
+#      - ./docker/hbase/data:/data
+
+  data:
+    container_name: data_mounts
+    image: busybox
+    volumes:
+      - ./docker/hbase/data:/data
