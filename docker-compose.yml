@@ -10,11 +10,11 @@ services:
       - "hbase"
     volumes:
         - ./urls:/opt/nutch/urls
-#        - ./docker/nutch/gora.properties:/opt/nutch/conf/gora.properties
-#        - ./docker/nutch/ivy.xml:/opt/apache-nutch-2.2.1/ivy/ivy.xml
-#        - ./docker/nutch/nutch-site.xml:/opt/apache-nutch-2.2.1/runtime/local/conf/nutch-site.xml
+        - ./docker/nutch/gora.properties:/opt/nutch/conf/gora.properties:ro
+        - ./docker/nutch/ivy.xml:/opt/apache-nutch-2.2.1/ivy/ivy.xml
+        - ./docker/nutch/nutch-site.xml:/opt/apache-nutch-2.2.1/runtime/local/conf/nutch-site.xml
 #        - ./docker/hbase/data:/data
-#        - ./docker/hbase/hbase-site.xml:/opt/apache-nutch-2.2.1/runtime/local/conf/hbase-site.xml
+        - ./docker/hbase/hbase-site.xml:/opt/apache-nutch-2.2.1/runtime/local/conf/hbase-site.xml
     volumes_from:
       - data
 #    volumes:
@@ -46,8 +46,8 @@ services:
 #      - APP_KEY=y3sHANM1WWa8DsVLKYqYdLzLRd1sYm2Z
     volumes_from:
       - data
-#    volumes:
-#      - ./docker/hbase/hbase-site.xml:/opt/hbase/hbase-0.94.15-cdh4.7.0/conf/hbase-site.xml
+    volumes:
+      - ./docker/hbase/hbase-site.xml:/opt/hbase/hbase-0.94.15-cdh4.7.0/conf/hbase-site.xml
 #      - ./docker/hbase/data:/data
 
   data:
