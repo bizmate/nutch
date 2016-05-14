@@ -3,18 +3,41 @@ version: '2'
 services:
   nutch:
     container_name: nutch
-    image: meabed/nutch
+    image: diegogullo/nutch:2
     ports:
           - 8899:8899
-    links:
-      - "hbase"
+          #ZooKeeper
+          - 2181:2181
+          - 39534:39534
+          # NameNode (HDFS)
+          - 8020:8020
+          - 50070:50070
+          - 9000:9000
+          # DataNode (HDFS)
+          - 50010:50010
+          - 50020:50020
+          - 50075:50075
+          # SecondaryNameNode (HDFS)
+          - 50090:50090
+          # Trackers
+          - 50030:50030
+          - 50060:50060
+          #HBASE
+          - 6000:6000
+          - 60010:60010
+          - 60020:60020
+          - 60030:60030
+          # Thrift
+          - 9090:9090
+          - 9095:9095
+#    links:
+#      - "hbase"
     volumes:
         - ./urls:/opt/nutch/urls
-#        - ./docker/nutch/gora.properties:/opt/nutch/conf/gora.properties
-#        - ./docker/nutch/ivy.xml:/opt/apache-nutch-2.2.1/ivy/ivy.xml
-#        - ./docker/nutch/nutch-site.xml:/opt/apache-nutch-2.2.1/runtime/local/conf/nutch-site.xml
-#        - ./docker/hbase/data:/data
-#        - ./docker/hbase/hbase-site.xml:/opt/apache-nutch-2.2.1/runtime/local/conf/hbase-site.xml
+        - ./docker/nutch/gora.properties:/opt/nutch/conf/gora.properties
+        - ./docker/nutch/ivy.xml:/opt/apache-nutch-2.x/ivy/ivy.xml
+        - ./docker/nutch/nutch-site.xml:/opt/nutch/conf/nutch-site.xml
+        - ./docker/hbase/hbase-site.xml:/opt/nutch/conf/hbase-site.xml
     volumes_from:
       - data
 #    volumes:
@@ -32,8 +55,8 @@ services:
 #      #- ./docker/cassandra/cassandra.yaml:/etc/cassandra/cassandra.yaml
 #      - ./docker/cassandra/data:/var/lib/cassandra/
 
-  hbase:
-    image: banno/hbase-standalone
+#  hbase:
+#    image: banno/hbase-standalone
 #    environment:
 #      - REDIS_HOST=appcache
 #      - REDIS_PORT=6379
@@ -44,8 +67,8 @@ services:
 #      - APP_ENV=local # to be changed with env variable soon
 #      - APP_DEBUG=true
 #      - APP_KEY=y3sHANM1WWa8DsVLKYqYdLzLRd1sYm2Z
-    volumes_from:
-      - data
+#    volumes_from:
+#      - data
 #    volumes:
 #      - ./docker/hbase/hbase-site.xml:/opt/hbase/hbase-0.94.15-cdh4.7.0/conf/hbase-site.xml
 #      - ./docker/hbase/data:/data

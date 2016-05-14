@@ -44,3 +44,5 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 # Created by .ignore support plugin (hsz.mobi)
+
+/urls

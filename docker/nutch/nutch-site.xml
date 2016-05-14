@@ -1,93 +1,44 @@
-<?xml version="1.0"?>
-<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
-<configuration>
-    <property>
-        <name>http.agent.name</name>
-        <value>mycrawlername</value> <!-- this can be changed to something more sane if you like -->
-    </property>
-    <property>
-        <name>http.robots.agents</name>
-        <value>mycrawlername</value> <!-- this is the robot name we're looking for in robots.txt files -->
-    </property>
-    <property>
-        <name>storage.data.store.class</name>
-        <value>org.apache.gora.hbase.store.HBaseStore</value>
-    </property>
-    <property>
-        <name>plugin.includes</name>
-        <!-- do **NOT** enable the parse-html plugin, if you want proper HTML parsing. Use something like parse-tika! -->
-        <value>protocol-httpclient|urlfilter-regex|parse-(text|tika|js)|index-(basic|anchor)|query-(basic|site|url)|response-(json|xml)|summary-basic|scoring-opic|urlnormalizer-(pass|regex|basic)|indexer-elastic</value>
-    </property>
-    <property>
-        <name>db.ignore.external.links</name>
-        <value>true</value> <!-- do not leave the seeded domains (optional) -->
-    </property>
-    <property>
-        <name>elastic.host</name>
-        <value>192.168.64.2</value> <!-- where is ElasticSearch listening -->
-    </property>
-</configuration>
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
-<configuration>
-
-    <property>
-        <name>http.agent.name</name>
-        <value>Mozilla/5.0</value>
-    </property>
-    <property>
-        <name>http.robots.agents</name>
-        <value>Mozilla/5.0,*</value>
-    </property>
-    <property>
-        <name>http.agent.description</name>
-        <value>Mozilla/5</value>
-    </property>
-    <property>
-        <name>http.agent.version</name>
-        <value>0.0.1</value>
-    </property>
-    <property>
-        <name>http.agent.url</name>
-        <value>http://www.google.com</value>
-    </property>
-    <property>
-        <name>http.agent.email</name>
-        <value>mo.meabed@gmail.com</value>
-    </property>
-    <property>
-        <name>http.content.limit</name>
-        <value>1000000</value>
-    </property>
-    <property>
-        <name>storage.data.store.class</name>
-        <value>org.apache.gora.cassandra.store.CassandraStore</value>
-        <description>Default class for storing data</description>
-    </property>
-    <property>
-        <name>fetcher.server.delay</name>
-        <value>2.0</value>
-        <description>The number of seconds the fetcher will delay between
-            successive requests to the same server.
-        </description>
-    </property>
-    <property>
-        <name>indexer.max.title.length</name>
-        <value>300</value>
-        <description>The maximum number of characters of a title that are indexed. A value of -1 disables this check.
-            Used by index-basic.
-        </description>
-    </property>
-    <property>
-        <name>plugin.includes</name>
-        <value>protocol-http|urlfilter-regex|parse-(html|tika)|index-(basic|anchor|more|html)|urlnormalizer-(pass|regex|basic)|scoring-opic|protocol-httpclient|language-identifier</value>
-        <description>Regular expression naming plugin directory names to
-            include. Any plugin not matching this expression is excluded.
-            In any case you need at least include the nutch-extensionpoints plugin. By
-            default Nutch includes crawling just HTML and plain text via HTTP,
-            and basic indexing and search plugins. In order to use HTTPS please enable
-            protocol-httpclient, but be aware of possible intermittent problems with the
-            underlying commons-httpclient library.
-        </description>
-    </property>
-</configuration>
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+  
+  http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
 -->
+<configuration>
+  <property>
+    <name>http.agent.name</name>
+    <value>mycrawlername</value> <!-- this can be changed to something more sane if you like -->
+  </property>
+  <property>
+    <name>http.robots.agents</name>
+    <value>mycrawlername</value> <!-- this is the robot name we're looking for in robots.txt files -->
+  </property>
+  <property>
+    <name>storage.data.store.class</name>
+    <value>org.apache.gora.hbase.store.HBaseStore</value>
+  </property>
+  <property>
+    <name>plugin.includes</name>
+    <!-- do **NOT** enable the parse-html plugin, if you want proper HTML parsing. Use something like parse-tika! -->
+    <value>protocol-httpclient|urlfilter-regex|parse-(text|tika|js)|index-(basic|anchor)|query-(basic|site|url)|response-(json|xml)|summary-basic|scoring-opic|urlnormalizer-(pass|regex|basic)|indexer-elastic</value>
+  </property>
+  <property>
+    <name>db.ignore.external.links</name>
+    <value>true</value> <!-- do not leave the seeded domains (optional) -->
+  </property>
+  <!--<property>-->
+    <!--<name>elastic.host</name>-->
+    <!--<value>192.168.64.2</value> &lt;!&ndash; where is ElasticSearch listening &ndash;&gt;-->
+  <!--</property>-->
+</configuration>
