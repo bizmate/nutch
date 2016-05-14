@@ -40,12 +40,7 @@ services:
         - ./docker/hbase/hbase-site.xml:/opt/nutch/conf/hbase-site.xml
     volumes_from:
       - data
-#    volumes:
-#      - ./:/project
-#      - ./logs:/logs
-#      - ./docker:/docker
-#      - ./v3:/v3
-#      - ./v2:/v2
+
 #  cassandra:
 #    container_name: cassandra
 #    image: cassandra

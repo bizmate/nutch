@@ -45,4 +45,5 @@ crashlytics-build.properties
 fabric.properties
 # Created by .ignore support plugin (hsz.mobi)
 
-/urls
+urls
+docker/hbase/data
