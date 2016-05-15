@@ -40,6 +40,9 @@ services:
         - ./docker/hbase/hbase-site.xml:/opt/nutch/conf/hbase-site.xml
     volumes_from:
       - data
+    environment:
+      - HBASE_HOME=/opt/hbase
+      - HADOOP_CLASSPATH="/opt/hbase/lib/*"
 
 #  cassandra:
 #    container_name: cassandra
